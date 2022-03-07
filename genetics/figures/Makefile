@@ -1,4 +1,5 @@
-FIGURES:=trio_example.png
+FIGURES:=trio_example.png \
+		 one_generation_disease_example.png
 
 all: $(FIGURES)
 
