@@ -1,5 +1,6 @@
 FIGURES:=trio_example.png \
-		 one_generation_disease_example.png
+		 one_generation_disease_example.png \
+		 loss_of_genetic_material.png
 
 all: $(FIGURES)
 
