@@ -1,6 +1,6 @@
 library(pedtools)
 
-png("trio_examples.png", pointsize = 18, width = 500)
+png("trio_example.png", pointsize = 18, width = 500)
 
 trio <- nuclearPed(nch = 2, sex = 2, mother = "Mother", father = "Father", children = c("Daughter"))
 
