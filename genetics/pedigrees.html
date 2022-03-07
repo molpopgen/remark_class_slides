@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="columns.css">
+    <style>
+    .gray {color: lightgray;}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Title
+
+Author
+
+Institution
+
+Date
+---
+
+.left-column-33[
+## Foo
+]
+.right-column-66[
+A. a
+
+B. b
+
+C. c
+]
+
+---
+
+.left-column-33[
+## .gray[Foo]
+## Bar
+]
+.right-column-66[
+A. A
+
+B. B
+
+C. C
+]
+
+---
+
+## Observablehq embed
+
+<iframe width="100%" height="575" frameborder="0"
+  src="https://observablehq.com/embed/@molpopgen/fixation-under-directional-selection?cells=viewof+N%2Cdetail_plot%2Cviewof+selection_coefficient"></iframe>
+
+
+---
+
+# Math
+
+$$y=mx+b$$
+
+Or, inline `\(y = mx+b\)`.
+
+---
+
+# Code
+
+```rust
+pub fn less_than(a: i64, b: i64) -> bool {
+    a < b
+}
+```
+
+```python
+def less_than_or_equal(a: int, b: int) -> bool {
+    return a <= b
+}
+```
+
+---
+
+# D3 -- JS code is *outside* the `textarea`
+
+<!-- Add a svg area, empty -->
+<svg id="Viz_area" height=400 width=450></svg>
+
+
+---
+
+# D3 in a column
+
+.left-column[
+Stuff on the left that should all fit in and not overlap the figure to the right.
+
+Did it work?
+]
+.right-column[
+<svg id="Viz_area2" height=400 width=400></svg>
+]
+
+---
+
+# D3 from a file
+
+<svg id="Viz_area3" width="100%", height=500></svg>
+
+---
+
+# Observable Plot
+
+See [here](https://github.com/observablehq/plot) and
+[here](https://www.josephoreilly.com/post/2021-08-04-observable-plot/).
+
+<figure id="fig1"></figure>
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configugray"
+        type="text/javascript"></script>  
+    <script>
+      var slideshow = remark.create();
+            // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+
+
+    <!-- The next two lines import D3 and Observable Plot.
+         Delete 1 or both as needed. -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
+
+
+    <script>
+    var svg = d3.select("#Viz_area")
+
+    // Create a scale: transform value in pixel
+    var x = d3.scaleLinear()
+        .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+        .range([0, 400]);       // This is the corresponding value I want in Pixel
+
+    // Show the axis that corresponds to this scale
+    svg.call(d3.axisBottom(x));
+
+    // Add 3 dots for 0, 50 and 100%
+    svg.append("circle")
+      .attr("cx", x(10)).attr("cy", 100).attr("r", 40).style("fill", "blue");
+    svg.append("circle")
+      .attr("cx", x(50)).attr("cy", 100).attr("r", 40).style("fill", "red");
+    svg.append("circle")
+      .attr("cx", x(100)).attr("cy", 100).attr("r", 40).style("fill", "green");
+    </script>
+
+    <script>
+    var svg = d3.select("#Viz_area2").append("svg")
+
+    // Add the path using this helper function
+    svg.append('rect')
+      .attr('x', 10)
+      .attr('y', 120)
+      .attr('width', 600)
+      .attr('height', 40)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2');
+
+    svg.append('rect')
+      .attr('x', 10)
+      .attr('y', 5)
+      .attr('width', 600)
+      .attr('height', 40)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2');
+
+    svg.append('rect')
+      .attr('x', 10)
+      .attr('y', 300)
+      .attr('width', 600)
+      .attr('height', 40)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2');
+    </script>
+
+    <script src="area3.js"></script>
+    <script src="plot.js"></script>
+  </body>
+</html>
