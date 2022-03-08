@@ -23,7 +23,7 @@ pos <- c(pos, rep(c(2, 4), sum(2**((ngens - 1) - 1:(ngens)))))
 pos <- c(pos, 2)
 
 haploDraw(p, sim[[1]],
-    cols = c(1:(nanc)), pos = pos
+    cols = c(1:(nanc)), pos = pos, height=4
 )
 
 dev.off()
