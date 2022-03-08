@@ -7,7 +7,7 @@ Sadly, there's no way that I know of to install `R` packages from a file, so I j
 
 `Python` is probably best done using a `venv`:
 
-```
+```sh
 python3 -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip
