@@ -34,12 +34,19 @@ UC Irvine
 
 ---
 
+## Example: two offspring with a disease, v2
+
+.center[<svg id="Viz_area" height=480 width=640></svg>]
+
+---
+
 ## Example: genetic vs genealogical ancestry
 
 This should go in another presentation -- just an example for now.
 
 .center[<img src="figures/loss_of_genetic_material.png" style="width: 65%"/>]
 
+---
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
@@ -65,22 +72,13 @@ This should go in another presentation -- just an example for now.
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
 
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configugray"
-        type="text/javascript"></script>  
-    <script>
-      var slideshow = remark.create();
-            // Setup MathJax
-      MathJax.Hub.Config({
-          tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-          }
-      });
+    <script src="js/pedigree_example_with_disease.js"></script>
 
-      MathJax.Hub.Configured();
+    <script>
+    svg = d3.select("#Viz_area");
+    draw_example_pedigree_with_disease(svg);
     </script>
+
 
   </body>
 </html>
