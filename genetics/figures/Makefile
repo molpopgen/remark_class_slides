@@ -4,6 +4,7 @@ FIGURES:=trio_example.png \
 		 autosomal_recessive.png \
 		 autosomal_recessive_affected_markers.png \
 		 autosomal_recessive_affected_parents_markers.png \
+		 autosomal_recessive_affected_all_parents_markers.png
 
 all: $(FIGURES)
 

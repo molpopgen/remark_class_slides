@@ -42,3 +42,16 @@ plot(fam,
 )
 
 dev.off()
+
+# Add markers to ALL of the parents
+png("autosomal_recessive_affected_all_parents_markers.png", pointsize = 18, width = 500)
+
+mpar <- marker(fam, "1" = "A/a", "2" = "A/a", "4" = "a/a", "6" = "a/a", "7" = "A/-")
+
+plot(fam,
+    marker = mpar,
+    symbolsize = 1.5, aff = affecteds,
+    hints = list(order = c(1:11), spouse = rbind(c(1, 2, 0), c(6, 7, 1)))
+)
+
+dev.off()
