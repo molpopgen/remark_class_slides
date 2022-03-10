@@ -5,13 +5,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="columns.css">
+    <link rel="stylesheet" href="punnett.css">
     <style>
     .gray {color: lightgray;}
-
-    #punnet_table {
-        width: 75%;
-        height: 55%;
-    }
 
     </style>
   </head>
@@ -28,9 +24,9 @@ UC Irvine
 
 ---
 
-# A Punnet square
+# A Punnett square
 
-<table id="punnet_table"></table>
+<table id="punnett_table" class="punnet_square"></table>
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
@@ -59,8 +55,7 @@ UC Irvine
     <script src="js/punnet_square.js"></script>
 
     <script>
-    // punnet_square_table([["A1","A2"]], [["A3","A4"]], "punnet_table");
-    punnet_square_table([["A1","A2"], ["B1","B2"]], [["A3","A4"], ["B3","B4"]], "punnet_table", "#99ccff");
+    punnet_square_table([["A1","A2"], ["B1","B2"]], [["A3","A4"], ["B3","B4"]], "punnet_table");
     </script>
 
 

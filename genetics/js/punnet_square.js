@@ -7,7 +7,7 @@ function _join(a, b) {
     }
 }
 
-function punnet_square_table(parent1, parent2, id, cell_color) {
+function punnet_square_table(parent1, parent2, id) {
     var table = document.getElementById(id);
 
 
@@ -28,20 +28,16 @@ function punnet_square_table(parent1, parent2, id, cell_color) {
 
     parent1_gametes.forEach((item, _) => { parent2_gametes.forEach((item2, _) => offspring_genotypes.push(_join(item, item2))) });
 
-    // var row = table.insertRow(0);
-    // var c = row.insertCell(0);
-    // c.innerHTML = "Pancakes";
-    // c = row.insertCell(1);
-    // c.innerHTML = "Ice cream";
-
     let rows = parent1_gametes.length;
 
     // Add the "title" row
     let table_row = table.insertRow(0);
     for (let cell = 0; cell < rows + 1; cell += 1) {
         let cell_obj = table_row.insertCell(cell);
+        cell_obj.style.border = "1px solid white";
         if (cell > 0) {
             cell_obj.innerHTML = parent1_gametes[cell - 1].join("");
+            cell_obj.style.border = "1px solid white";
         }
     }
 
@@ -50,15 +46,11 @@ function punnet_square_table(parent1, parent2, id, cell_color) {
 
         let cell = table_row.insertCell(0);
         cell.innerHTML = parent2_gametes[row].join("");
+        cell.style.border = "1px solid white";
 
         for (let i = 0; i < rows; i += 1) {
             let cell = table_row.insertCell(i + 1);
             cell.innerHTML = offspring_genotypes[i * rows + row];
-            if (cell_color != null) {
-                cell.style.border = "1px solid " + cell_color;
-            } else {
-                cell.style.border = "1px solid black";
-            }
         }
     }
 
