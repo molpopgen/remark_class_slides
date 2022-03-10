@@ -63,6 +63,7 @@ function punnet_square_table(parent1, parent2, id, cell_color) {
     }
 
     table.style.textAlign = "center";
+    table.style.borderSpacing = 0;
     table.cellPadding = 10;
 
 }
