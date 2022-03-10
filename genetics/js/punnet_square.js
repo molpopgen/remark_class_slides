@@ -53,7 +53,7 @@ function punnet_square_table(parent1, parent2, id, cell_color, cell_padding) {
 
         for (let i = 0; i < rows; i += 1) {
             let cell = table_row.insertCell(i + 1);
-            cell.innerHTML = offspring_genotypes[row * rows + i];
+            cell.innerHTML = offspring_genotypes[i * rows + row];
             if (cell_color != null) {
                 cell.style.border = "1px solid " + cell_color;
             } else {
