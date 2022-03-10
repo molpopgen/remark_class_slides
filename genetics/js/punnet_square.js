@@ -7,7 +7,7 @@ function _join(a, b) {
     }
 }
 
-function punnet_square_table(parent1, parent2, id, cell_color, cell_padding) {
+function punnet_square_table(parent1, parent2, id, cell_color) {
     var table = document.getElementById(id);
 
 
@@ -64,12 +64,5 @@ function punnet_square_table(parent1, parent2, id, cell_color, cell_padding) {
 
     table.style.textAlign = "center";
     table.style.borderSpacing = 0;
-
-    if (cell_padding != null) {
-        table.cellPadding = cell_padding;
-    } else {
-        table.cellPadding = "10px";
-    }
-
 }
 
