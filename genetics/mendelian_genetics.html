@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mendelian genetics</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="columns.css">
+    <style>
+    .gray {color: lightgray;}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Mendelian genetics
+
+Kevin R. Thornton
+
+UC Irvine
+
+---
+
+# A Punnet square
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configugray"
+        type="text/javascript"></script>  
+    <script>
+      var slideshow = remark.create();
+            // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+
+
+    <!-- The next two lines import D3 and Observable Plot.
+         Delete 1 or both as needed. -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
+
+    <script src="js/punnet_square.js"></script>
+
+
+  </body>
+</html>
