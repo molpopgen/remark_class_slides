@@ -24,8 +24,7 @@ UC Irvine
 
 # A Punnet square
 
-<div id="punnet_table">
-</div>
+<table id="punnet_table"></table>
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
@@ -54,7 +53,8 @@ UC Irvine
     <script src="js/punnet_square.js"></script>
 
     <script>
-    punnet_square_table([["A1","A2"]], [["A3","A4"]]);
+    // punnet_square_table([["A1","A2"]], [["A3","A4"]], "punnet_table");
+    punnet_square_table([["A1","A2"], ["B1","B2"]], [["A3","A4"], ["B3","B4"]], "punnet_table", "#99ccff");
     </script>
 
 
