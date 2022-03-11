@@ -36,6 +36,8 @@ function punnet_square_table(parent1, parent2, id) {
         let cell_obj = table_row.insertCell(cell);
         cell_obj.style.border = "1px solid white";
         if (cell > 0) {
+            // NOTE: can use .fontcolor() after
+            // the join.  Potential for callbacks.
             cell_obj.innerHTML = parent1_gametes[cell - 1].join("");
             cell_obj.style.border = "1px solid white";
         }
