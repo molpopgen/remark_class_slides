@@ -1,6 +1,6 @@
 function _join(a, b) {
     // NOTE: can fontcolor k and b[i] here, too.
-    const zip = (a, b) => a.map((k, i) => [k, b[i]].join(""));
+    const zip = (a, b) => a.map((k, i) => [k.text(), b[i].text()].join(""));
     if (Array.isArray(a) && Array.isArray(b)) {
         return zip(a, b).join("");
     } else {
@@ -20,8 +20,8 @@ function punnet_square_table(parent1, parent2, id) {
     let parent1_gametes = cartesian(...parent1);
     let parent2_gametes = cartesian(...parent2);
 
-    // console.log(parent1_gametes);
-    // console.log(parent2_gametes);
+    console.log(parent1_gametes);
+    console.log(parent2_gametes);
 
     // parent1_gametes.map((a, i) => console.log(a, i));
 
@@ -39,7 +39,8 @@ function punnet_square_table(parent1, parent2, id) {
         if (cell > 0) {
             // NOTE: can use .fontcolor() after
             // the join.  Potential for callbacks.
-            cell_obj.innerHTML = parent1_gametes[cell - 1].join("");
+            //cell_obj.innerHTML = parent1_gametes[cell - 1].join("");
+            cell_obj.innerHTML = make_genotype(parent1_gametes[cell - 1]);//.join("");
             cell_obj.style.border = "1px solid white";
         }
     }
@@ -48,7 +49,7 @@ function punnet_square_table(parent1, parent2, id) {
         let table_row = table.insertRow(row + 1);
 
         let cell = table_row.insertCell(0);
-        cell.innerHTML = parent2_gametes[row].join("");
+        cell.innerHTML = make_genotype(parent2_gametes[row]);//.join("");
         cell.style.border = "1px solid white";
 
         for (let i = 0; i < rows; i += 1) {

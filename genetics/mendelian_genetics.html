@@ -52,10 +52,22 @@ UC Irvine
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
 
+    <script src="js/textallele.js"></script>
     <script src="js/punnet_square.js"></script>
 
+
     <script>
-    punnet_square_table([["A1","A2"], ["B1","B2"]], [["A3","A4"], ["B3","B4"]], "punnett_table");
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("A1", parent1color);
+    var A2 = new TextAllele("A2", parent1color);
+    var A3 = new TextAllele("A3", parent2color);
+    var A4 = new TextAllele("A4", parent2color);
+    var B1 = new TextAllele("B1", parent1color);
+    var B2 = new TextAllele("B2", parent1color);
+    var B3 = new TextAllele("B3", parent2color);
+    var B4 = new TextAllele("B4", parent2color);
+    punnet_square_table([[A1,A2], [B1,B2]], [[A3,A4], [B3,B4]], "punnett_table");
     </script>
 
 
