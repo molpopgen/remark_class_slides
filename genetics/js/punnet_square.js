@@ -1,4 +1,5 @@
 function _join(a, b) {
+    // NOTE: can fontcolor k and b[i] here, too.
     const zip = (a, b) => a.map((k, i) => [k, b[i]].join(""));
     if (Array.isArray(a) && Array.isArray(b)) {
         return zip(a, b).join("");
