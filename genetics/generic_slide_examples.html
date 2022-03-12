@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic genetics slide examples</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="columns.css">
+    <link rel="stylesheet" href="punnett.css">
+    <style>
+    .gray {color: lightgray;}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Examples of generic slide types for genetics
+
+Kevin R. Thornton
+
+UC Irvine
+
+---
+
+# A Punnett square
+
+<table id="punnett_table" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A Punnett square (1 trait)
+
+<table id="punnett_table_one_trait" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A Punnett square (Sex linkage)
+
+<table id="punnett_table_sex_linkage" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A Punnett square with empty alleles
+
+<table id="punnett_table_empty_alleles" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A cross
+
+<svg id="cross" height=400 width=400></svg>
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configugray"
+        type="text/javascript"></script>  
+    <script>
+      var slideshow = remark.create();
+            // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+
+
+    <!-- The next two lines import D3 and Observable Plot.
+         Delete 1 or both as needed. -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
+
+    <script src="js/textallele.js"></script>
+    <script src="js/punnet_square.js"></script>
+
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("A1", parent1color);
+    var A2 = new TextAllele("A2", parent1color);
+    var A3 = new TextAllele("A3", parent2color);
+    var A4 = new TextAllele("A4", parent2color);
+    var B1 = new TextAllele("B1", parent1color);
+    var B2 = new TextAllele("B2", parent1color);
+    var B3 = new TextAllele("B3", parent2color);
+    var B4 = new TextAllele("B4", parent2color);
+    punnet_square_table([[A1,A2], [B1,B2]], [[A3,A4], [B3,B4]], "punnett_table");
+    </script>
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = make_A_allele(true, parent1color);
+    var A2 = make_A_allele(false, parent1color);
+    var A3 = make_A_allele(true, parent2color);
+    var A4 = make_A_allele(false, parent2color);
+    punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_one_trait");
+    </script>
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("X" + "A".sup(), parent1color);
+    var A2 = new TextAllele("X" + "a".sup(), parent1color);
+    var A3 = new TextAllele("X" + "A".sup(), parent2color);
+    var A4 = new TextAllele("Y", parent2color);
+    punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_sex_linkage");
+    </script>
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("X" + "A".sup(), parent1color);
+    var A2 = new TextAllele("X" + "a".sup(), parent1color);
+    var A3 = new TextAllele("X" + "A".sup(), parent2color);
+    var A4 = blank_allele();
+    console.log(A4);
+    punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_empty_alleles");
+    </script>
+
+    <script>
+    var svg = d3.select("#cross")
+    var h = svg.attr("height");
+    var w = svg.attr("width");
+
+    console.log(h,w);
+
+
+    //var r = svg.append('rect')
+    //        .attr('x', 0)
+    //        .attr('y', 0)
+    //        .attr('height',50)
+    //        .attr('width',50)
+    //        .style("opacity",0.5)
+    //        .attr("id","manilow");
+    svg.append('defs').append('marker').attr('viewBox',[0,0,50,50]).attr('markerWidth', 50).attr('markerHeight', 50).attr('id','punk').append(
+    'rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('height',50)
+    .attr('width',50)
+    .style("opacity",0.5);
+    var r = svg.append('rect')
+        .attr("id", "barry")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('height',50)
+            .attr('width',50)
+            .style("opacity",0.5)
+            .style("fill", "green");
+    console.log("path=",path);
+    var path = d3.line()([[w/10,h/10], [0.8*w,h/10]]);
+    svg.append('path').attr('d', path).attr('stroke', 'black').attr('marker-end', 'url(#punk)');
+    d3.select("#barry").attr("transform", "translate("+w/10+","+h/10+")");
+    //d3.select("#manilow").attr("transform", "translate("+0.8*w+","+h/10+")");
+    </script>
+
+  </body>
+</html>

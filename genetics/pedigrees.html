@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to pedigrees</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="columns.css">
+    <style>
+    .gray {color: lightgray;}
+
+    div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+    }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Pedigrees
+
+Kevin R. Thornton
+
+UC Irvine
+
+---
+
+## Example: a parent/offspring "trio"
+
+.center[![](figures/trio_example.png)]
+
+---
+
+## Example: two offspring with a disease
+
+.center[![](figures/one_generation_disease_example.png)]
+
+---
+
+## Autosomal recessive inheritance
+
+.center[<img src="figures/autosomal_recessive.png" style="width: 65%"/>]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+Affected genotype?
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+Affected genotype?
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive_affected_markers.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+.gray[Affected genotype?]
+
+Genotype of parents 1 and 2?
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive_affected_markers.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+.gray[Affected genotype?]
+
+Genotype of parents 1 and 2?
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive_affected_parents_markers.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+.gray[Affected genotype?]
+
+.gray[Genotype of parents 1 and 2?]
+
+Genotype of individual 7?
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive_affected_parents_markers.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+.gray[Affected genotype?]
+
+.gray[Genotype of parents 1 and 2?]
+
+Genotype of individual 7?
+
+]
+.right-column-66[
+.center[<img src="figures/autosomal_recessive_affected_all_parents_markers.png" style="width: 85%"/>]
+]
+
+---
+
+## Autosomal recessive inheritance
+
+.left-column-33[
+
+.center[<img src="figures/autosomal_recessive_affected_all_parents_markers.png" style="width: 100%"/>]
+
+]
+.right-column-66[
+Why can individual 7 be `\(AA\)` or `\(Aa\)`?
+]
+
+
+---
+
+## Example: genetic vs genealogical ancestry
+
+This should go in another presentation -- just an example for now.
+
+.center[<img src="figures/loss_of_genetic_material.png" style="width: 65%"/>]
+
+---
+
+# Bananas
+
+<svg id="Viz_area" height=400 width=450></svg>
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configugray"
+        type="text/javascript"></script>  
+    <script>
+      var slideshow = remark.create();
+            // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+
+
+    <!-- The next two lines import D3 and Observable Plot.
+         Delete 1 or both as needed. -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.4"></script>
+
+    <script>
+    var svg = d3.select("#Viz_area")
+
+    var tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "#000")
+    .text("a simple tooltip");
+
+      svg
+    .append('defs')
+    .append('marker')
+    .attr('id', 'dot')
+    .attr('viewBox', [0, 0, 20, 20])
+    .attr('refX', 10)
+    .attr('refY', 10)
+    .attr('markerWidth', 10)
+    .attr('markerHeight', 10)
+    .append('circle')
+    .attr('cx', 10)
+    .attr('cy', 10)
+    .attr('r', 10)
+    .style('fill', 'green');
+
+      svg
+    .append('defs')
+    .append('marker')
+    .attr('id', 'rect')
+    .attr('viewBox', [0, 0, 20, 20])
+    .attr('refX', 10)
+    .attr('refY', 10)
+    .attr('markerWidth', 10)
+    .attr('markerHeight', 10)
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', 20)
+    .attr('height', 20)
+    .style('fill', 'pink');
+
+  svg
+    .append('defs')
+    .append('marker')
+    .attr('id', 'FOO')
+    .attr('viewBox', [0, 0, 50, 50])
+    .attr('refX', 10)
+    .attr('refY', 10)
+    .attr('markerWidth', 25)
+    .attr('markerHeight', 25)
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', 50)
+    .attr('height', 50)
+    .style('fill', 'yellow');
+
+
+
+
+
+  svg
+    .append('path')
+    .attr('d', d3.line()([[20, 20], [60, 20]]))
+    .attr('stroke', 'black')
+    .attr('marker-start', 'url(#dot)')
+    .attr('fill', 'none')
+    .attr('marker-end', 'url(#rect)')
+    .attr('fill', 'none');
+    
+    svg.append('path')
+        .attr('d', d3.line()([[40, 20], [40, 60]]))
+        .attr('stroke', 'black');
+
+    svg.append('path')
+        .attr('d', d3.line()([[10, 60], [70, 60]]))
+        .attr('stroke', 'black');
+
+    var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
+    var focus = svg.append("g").style("display", "none");
+
+      focus.append("circle")                                 // **********
+        .attr("class", "y")                                // **********
+        .style("fill", "none")                             // **********
+        .style("stroke", "blue")                           // **********
+        .attr("r", 4);
+
+    svg.append('path').attr('d', d3.line()([[10, 60], [10, 80]]))
+        .attr('stroke', 'black')
+        .attr('marker-end', 'url(#FOO)')
+        //.attr('fill', 'none')
+    .on('mouseover', function(event, data) {
+            const[x, y] = d3.pointer(event);
+             focus.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            console.log(x, y);
+            console.log(event);
+            console.log("here");
+            focus.select("circle.y").attr("transform", "translate("+y+")" + "px");
+            focus.style("display", null);
+             })
+        .on("mouseleave", function(event, data) {		
+            focus.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+            focus.style("display", "none");
+        });
+    </script>
+
+  </body>
+</html>
