@@ -9,14 +9,14 @@ function _join(a, b) {
 }
 
 function _cartesian(input) {
-    if (input.length == 1) {
-        let rv = []
-        input.map(a => rv.push(a));
-        console.log(input, rv);
-        return rv;
-    }
     const cartesian =
         (...a) => a.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat())));
+    if (input.length == 1) {
+        let temp = [];
+        input[0].map(a => { let x = []; x.push(a); console.log("x=", x); temp.push(x); });
+        console.log("temp=", temp, cartesian(temp));
+        return cartesian(temp);
+    }
     return cartesian(...input);
 }
 
