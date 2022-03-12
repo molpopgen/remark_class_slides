@@ -11,7 +11,7 @@ class TextAllele {
 
 function blank_allele() {
     // no label, white, 0 opacity
-    return new TextAllele("", "#ffffff00");
+    return new TextAllele(" ", "#ffffff");
 }
 
 function make_A_allele(dominant, fontcolor) {

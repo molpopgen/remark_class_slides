@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mendelian genetics</title>
+    <title>Basic genetics slide examples</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="columns.css">
@@ -16,7 +16,7 @@
 
 class: center, middle
 
-# Mendelian genetics
+# Examples of generic slide types for genetics
 
 Kevin R. Thornton
 
@@ -33,6 +33,19 @@ UC Irvine
 # A Punnett square (1 trait)
 
 <table id="punnett_table_one_trait" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A Punnett square (Sex linkage)
+
+<table id="punnett_table_sex_linkage" class="punnet_square" width="100%" height=50%></table>
+
+---
+
+# A Punnett square with empty alleles
+
+<table id="punnett_table_empty_alleles" class="punnet_square" width="100%" height=50%></table>
+
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
@@ -84,6 +97,27 @@ UC Irvine
     var A3 = make_A_allele(true, parent2color);
     var A4 = make_A_allele(false, parent2color);
     punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_one_trait");
+    </script>
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("X" + "A".sup(), parent1color);
+    var A2 = new TextAllele("X" + "a".sup(), parent1color);
+    var A3 = new TextAllele("X" + "A".sup(), parent2color);
+    var A4 = new TextAllele("Y", parent2color);
+    punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_sex_linkage");
+    </script>
+
+    <script>
+    var parent1color = "blue";
+    var parent2color = "green";
+    var A1 = new TextAllele("X" + "A".sup(), parent1color);
+    var A2 = new TextAllele("X" + "a".sup(), parent1color);
+    var A3 = new TextAllele("X" + "A".sup(), parent2color);
+    var A4 = blank_allele();
+    console.log(A4);
+    punnet_square_table([[A1,A2]], [[A3,A4]], "punnett_table_empty_alleles");
     </script>
 
   </body>
